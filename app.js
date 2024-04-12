@@ -1,17 +1,27 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const express = require('express')
+const router = express.Router()
+const app = express()
+const port = 3000
 
-app.get('/', (req, res) => {
-  res.json({ success: true, message: 'is running' });
-});
+router.get('/', (req, res) => {
+  res.json({ status: 'true', message: 'is running' })
+})
 
-// Rute untuk mengembalikan hasil success
-app.get('/success', (req, res) => {
-  res.json({ success: true, message: 'Request was successful' });
-});
+router.get('/pos-lite', (req, res) => {
+  res.json({ status: 'true', message: 'hello' })
+})
 
-// Menjalankan server pada port tertentu
+app.use('/api', router)
+
+// // define the about route
+// router.get('/about', (req, res) => {
+//   res.send('About birds')
+// })
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
+
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+  console.log(`Example app listening on port ${port}`)
+})
